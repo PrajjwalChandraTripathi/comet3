@@ -21,7 +21,7 @@ default: &default
 
 development:
   <<: *default
-  database: comet3_development
+  url: "postgresql://planet_kvzq_user:akhyv0FAnGYDA7mo7210v9qm6LqxDWkI@dpg-cqlojmjv2p9s73b9g710-a.oregon-postgres.render.com/planet_kvzq"
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
