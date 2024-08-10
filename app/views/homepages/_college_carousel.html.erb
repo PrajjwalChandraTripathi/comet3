@@ -1,0 +1,74 @@
+<div class="contains">
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+      <h2 class="h2class">COLLABORATED COLLEGES</h2>
+    </div>
+  </div>
+</div>
+
+<div id="boxCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <% @items.each_slice(4).with_index do |group, index| %>
+      <div class="carousel-item <%= 'active' if index == 0 %>">
+        <div class="container">
+          <div class="row">
+            <% group.each do |item| %>
+              <div class="col-md-3">
+                <a href="<%= item.link.start_with?('http') ? item.link : "http://#{item.link}" %>" class="card-link" target="_blank">
+                  <div class="card">
+                    <% if item.image.attached? %>
+                      <%= image_tag item.image.variant(resize_to_limit: [300, 300]), class: "card-img-top", alt: item.title %>
+                    <% else %>
+                      <%= image_tag "placeholder_image.jpg", class: "card-img-top", alt: "Placeholder" %>
+                    <% end %>
+                    <div class="card-body">
+                      <h5 class="card-title text-center"><%= item.title %></h5>
+                      <p class="card-text text-center"><%= item.location %></p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#boxCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#boxCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<style>
+.carousel-item {
+  padding: 15px;
+}
+
+.card {
+  margin: 10px;
+}
+
+.h2class {
+  padding-top:60px;
+  margin-bottom: 20px;
+  font-weight:bold;
+  font-size:40px;
+}
+
+.carousel-inner{
+  margin-bottom: 80px;
+}
+
+.card-img-top{
+  height: 200px;
+  padding:10px;
+  background:#012542;
+}
+
+
+</style>
