@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centered Form in Card Example</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .form-card {
+        .form-cards {
             max-width: 85%;
             margin: 20px auto; /* Center horizontally */
             padding: 20px;
@@ -15,13 +8,13 @@
             color: white;
             margin-top: 100px;
         }
-        .form-card .form-container {
+        .form-cards .form-containeri {
             position: relative;
             display: flex;
             justify-content: space-between;
             align-items: center; /* Vertically center */
         }
-        .form-card .form-container .left {
+        .form-cards .form-containeri .left {
             display: flex;
             flex-direction: column;
             flex: 1;
@@ -29,10 +22,10 @@
             text-align: left;
             margin-left: 70px; /* Center text horizontally */
         }
-        .form-card .form-container .left h1 {
+        .form-cards .form-containeri .left h1 {
             font-weight: bold;
         }
-        .form-card .form-container .right {
+        .form-cards .form-containeri .right {
             flex: 1;
             padding-left: 20px;
         }
@@ -100,13 +93,28 @@
         html {
         scroll-behavior: smooth;
         }
+        @media (max-width: 768px) {
+            .form-cards .form-containeri .left {
+              display: none;
+            }
+
+            .form-cards .form-containeri .right {
+                flex: 1 0 100%; /* Make the right section take up the full width */
+                padding-left: 0; /* Adjust padding if necessary */
+                display: flex;
+                flex-direction: column;
+                align-items: center; 
+            }
+            .form-cards .form-containeri .right .form-control {
+              width: 100%; /* Set width to 85% of the card */
+            }
+        }
 </style>
-</head>
-<body>
-<div class="container" id="contact-us">
-    <div class="card form-card">
-        <div class="card-body">
-            <div class="form-container">
+
+<div class="containeri" id="contact-us">
+    <div class="cardi form-cards">
+        <div class="cards-body">
+            <div class="form-containeri">
                 <div id="cardi" class="animated fadeIn">
                     <div id="upper-side">
                         <svg version="1.1" id="checkmark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" xml:space="preserve">
@@ -125,41 +133,45 @@
                         <p id="message">Congratulations, your account has been successfully created.</p>
                     </div>
                 </div>
-                <div class="left">
+                <div class="left ">
                     <p>Let's Get In Touch</p>
                     <h1>Don't Hesitate To Contact Us</h1>
                 </div>
                 <div class="right">
+                    <div class="lefti d-md-none" style="margin-bottom: 10px;">
+                        <p>Let's Get In Touch</p>
+                        <h1>Fill Your Details Here :-</h1>
+                    </div> 
                     <%= form_with model: @contact, url: submit_form_path, method: :post, local: false, id: 'contactForm' do |form| %>
                         <div class="form-group">
                             <%= form.label :candidate_name, "Enter your name" %>
-                            <%= form.text_field :candidate_name, placeholder: "Enter your name", required: true, class: "form-control" %>
+                            <%= form.text_field :candidate_name, placeholder: "Your Name", required: true, class: "form-control" %>
                         </div>
                         <div class="form-group">
                             <%= form.label :father_name, "Enter father's name" %>
-                            <%= form.text_field :father_name, placeholder: "Enter father's name", required: true, class: "form-control" %>
+                            <%= form.text_field :father_name, placeholder: "Father's name", required: true, class: "form-control" %>
                         </div>
                         <div class="form-group">
                             <%= form.label :phone_number, "Enter phone number" %>
-                            <%= form.telephone_field :phone_number, placeholder: "Enter phone number", required: true, class: "form-control", pattern: "[0-9]{10}" %>
+                            <%= form.telephone_field :phone_number, placeholder: "i.e. 9875678768", required: true, class: "form-control", pattern: "[0-9]{10}" %>
                         </div>
                         <div class="form-group">
                             <%= form.label :email_id, "Enter Email_id" %>
-                            <%= form.email_field :email_id, placeholder: "Enter Email id", required: true, class: "form-control"%>
+                            <%= form.email_field :email_id, placeholder: "i.e. mail@mail.com", required: true, class: "form-control"%>
                         </div>
                         <div class="form-group">
                             <%= form.label :college, "College" %>
-                            <%= form.text_field :college, placeholder: "Enter College", required: true, class: "form-control"%>
+                            <%= form.text_field :college, placeholder: " College", required: true, class: "form-control"%>
                         </div>
                         <div class="form-group">
                             <%= form.label :course_interest, "Course" %>
-                            <%= form.text_field :course_interest, placeholder: "Enter Course Interest", required: true, class: "form-control"%>
+                            <%= form.text_field :course_interest, placeholder: "Course you want to enroll", required: true, class: "form-control"%>
                         </div>
                         <div class="form-group">
                             <%= form.label :query, "Enter your query" %>
-                            <%= form.text_area :query, placeholder: "Enter your query", required: true, rows: 2, class: "form-control" %>
+                            <%= form.text_area :query, placeholder: "Question to ask ", required: true, rows: 2, class: "form-control" %>
                         </div>
-                          <%= form.submit "Submit", class: "btn btn-primary", style: "background-color: #6351ce; border: none;" %>
+                    <%= form.submit "Submit", class: "btn btn-primary", style: "background-color: #6351ce; border: none;" %>
                     <% end %>
                 </div>
             </div>
@@ -198,5 +210,4 @@
         });
     });
 </script>
-</body>
-</html>
+

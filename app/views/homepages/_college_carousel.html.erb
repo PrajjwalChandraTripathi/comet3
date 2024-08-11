@@ -8,12 +8,12 @@
 
 <div id="boxCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <% @items.each_slice(4).with_index do |group, index| %>
+    <% @items.each_slice(3).with_index do |group, index| %>
       <div class="carousel-item <%= 'active' if index == 0 %>">
         <div class="container">
-          <div class="row">
+          <div class="row ">
             <% group.each do |item| %>
-              <div class="col-md-3">
+              <div class="col-4 col-md-4 col-lg-4">
                 <a href="<%= item.link.start_with?('http') ? item.link : "http://#{item.link}" %>" class="card-link" target="_blank">
                   <div class="card">
                     <% if item.image.attached? %>
@@ -22,7 +22,7 @@
                       <%= image_tag "placeholder_image.jpg", class: "card-img-top", alt: "Placeholder" %>
                     <% end %>
                     <div class="card-body">
-                      <h5 class="card-title text-center"><%= item.title %></h5>
+                      <h5 class="card-title text-center"style="font-size:5px;"> <%= item.title %></h5>
                       <p class="card-text text-center"><%= item.location %></p>
                     </div>
                   </div>
@@ -46,7 +46,7 @@
 
 <style>
 .carousel-item {
-  padding: 15px;
+  padding: 25px;
 }
 
 .card {
@@ -54,21 +54,51 @@
 }
 
 .h2class {
-  padding-top:60px;
+  padding-top: 60px;
   margin-bottom: 20px;
-  font-weight:bold;
-  font-size:40px;
+  font-weight: bold;
+  font-size: 40px;
 }
 
-.carousel-inner{
+.carousel-inner {
   margin-bottom: 80px;
 }
 
-.card-img-top{
+.card-img-top {
   height: 200px;
-  padding:10px;
-  background:#012542;
+  padding: 10px;
+  background: #012542;
 }
 
-
+@media (max-width: 767.98px) {
+  .carousel-item {
+    padding: 0px;
+  }
+  .col-md-4 {
+    flex: 0 0 33.3333%;
+    max-width: 33%;
+  }
+  .card-img-top {
+    height: 120px;
+  }
+  .card {
+    margin: 2px;
+  }
+  .carousel-item {
+    display: flex;
+    justify-content: center;
+  }
+  .card-text{
+    font-size: 5px;
+  }
+  .card-img-top {
+    height: 150px; /* Adjust the height of the images for smaller screens */
+  }
+  .h2class {
+  padding-top: 40px;
+  margin-bottom: 14px;
+  font-weight: bold;
+  font-size: 20px;
+}
+}
 </style>

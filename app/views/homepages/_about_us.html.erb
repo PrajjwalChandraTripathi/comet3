@@ -1,20 +1,17 @@
 <div id="about-us" class="container my-5 about-us">
   <div class="row">
+  <h2 class="card-title d-md-none text-center" style="margin-bottom:15px;  font-weight: bold; font-size: 20px;">About Us</h2>
     <div class="col-md-6">
       <img src="<%= asset_path('pexels-ivan-samkov-5676744.jpg') %>" class="img-fluid rounded" alt="About Us Image">
     </div>
     <div class="col-md-6">
-      <h2>About Us</h2>
+      <h2 class="card-titlei  d-md-block">About Us</h2>
       <p>Welcome to our company! We are dedicated to providing the best service in the industry. Our team of professionals is committed to exceeding your expectations and delivering exceptional results. With years of experience and a passion for excellence, we strive to be the leaders in our field. Thank you for choosing us and we look forward to working with you!</p>
     </div>
   </div>
 </div>
 
 <style>
-
-html {
-  scroll-behavior: smooth;
-}
 
 .about-us {
   margin: 50px 0;
@@ -39,5 +36,18 @@ html {
 /* Adding bottom margin specifically */
 .about-us {
   margin-bottom: 500px;
+}
+
+@media (max-width: 768px){
+  .about-us p{
+    margin-top: 10px;
+  }
+  .card-titlei{
+    display: none;
+  }
+  .about-us {
+    margin: 7px 0;
+    margin-bottom:5px;
+  }
 }
 </style>
